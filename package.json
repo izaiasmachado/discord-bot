@@ -1,0 +1,24 @@
+{
+  "name": "discord-bot",
+  "version": "1.0.0",
+  "description": "Simple discord bot for my server.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/izaiasmachado/discord-bot.git"
+  },
+  "author": "Izaias Machado",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/izaiasmachado/discord-bot/issues"
+  },
+  "homepage": "https://github.com/izaiasmachado/discord-bot#readme",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "discord.js-commando": "^0.10.0"
+  }
+}
