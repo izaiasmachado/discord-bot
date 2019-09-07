@@ -19,6 +19,6 @@
   "homepage": "https://github.com/izaiasmachado/discord-bot#readme",
   "dependencies": {
     "discord.js": "^11.5.1",
-    "discord.js-commando": "^0.10.0"
+    "mongoose": "^5.6.13"
   }
 }
