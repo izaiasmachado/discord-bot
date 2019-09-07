@@ -1,16 +1,18 @@
-const Discord = require('discord.js-commando')
+const Discord = require('discord.js')
+const fs = require('fs')
 
-const token = require('./credentials/discord.json').server.apiKey
-const owner = require('./credentials/discord.json').server.ownerId
-const key = '!'
+const { token } = require('./config.json').bot
+const { owner } = require('./config.json').bot
 
 const bot = new Discord.Client({ owner })
 
-bot.registry.registerDefaults()
-
-bot.on('ready', () => {
-    console.log(`Working fine!`)
-    console.log(`Logged in as ${bot.user.tag}`)
+// This function takes care of event handling. Ex: when bot is ready or a user joined guild.
+fs.readdir('./events/', (err, files) => {
+    files.forEach(file => {
+        const eventHandler = require(`./events/${file}`)
+        const eventName = file.split('.')[0] // To get rid of the .js extension while reading files.
+        bot.on(eventName, arg => eventHandler(bot, arg))
+    })
 })
 
 bot.login(token)

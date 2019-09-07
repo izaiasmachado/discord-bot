@@ -1,6 +1,10 @@
 {
+    "bot": {
+        "token": "",
+        "owner": ""
+    },
     "server": {
-        "apiKey": "",
-        "ownerId": ""
+        "key": "!",
+        "memberLog": "member-log"
     }
 }
