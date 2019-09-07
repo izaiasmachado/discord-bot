@@ -38,7 +38,7 @@ function format(msg) {
     let args = ''
     let cond = false
 
-    for(let i = 1; i < msg.length; i++) {
+    for (let i = 1; i < msg.length; i++) {
         if (msg[i] === ' ') {
             cond = true
         } else {

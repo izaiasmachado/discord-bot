@@ -13,8 +13,7 @@ const CommandsSchema = new Schema({
         required: true
     },
 }, {
-        timestamps: true
-    }
-)
+    timestamps: true
+})
 
 module.exports = model('Commands', CommandsSchema)
