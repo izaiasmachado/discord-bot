@@ -1,10 +1,17 @@
 const Discord = require('discord.js')
 const fs = require('fs')
+const mongoose = require('mongoose')
 
-const { token } = require('./config.json').bot
+const { token } = require('../credentials/discord.json')
 const { owner } = require('./config.json').bot
 
 const bot = new Discord.Client({ owner })
+
+const { cluster } = require('../credentials/mongodb')
+
+mongoose.connect(cluster, {
+    useNewUrlParser: true
+})
 
 // This function takes care of event handling. Ex: when bot is ready or a user joined guild.
 fs.readdir('./events/', (err, files) => {
