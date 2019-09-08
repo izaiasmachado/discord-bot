@@ -12,6 +12,10 @@ const CommandsSchema = new Schema({
         type: String,
         required: true
     },
+    dm: {
+        type: Boolean,
+        required: true
+    }
 }, {
     timestamps: true
 })

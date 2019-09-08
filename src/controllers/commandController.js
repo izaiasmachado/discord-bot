@@ -11,6 +11,7 @@ module.exports = {
         const { name } = req.body
         const { description } = req.body
         const { action } = req.body
+        const { dm } = req.body
 
         const cmdExists = await Command.findOne({ name })
 
@@ -21,7 +22,8 @@ module.exports = {
         const cmd = await Command.create({
             name,
             description,
-            action
+            action,
+            dm
         })
 
         return res.json(cmd)
