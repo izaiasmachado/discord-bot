@@ -9,4 +9,5 @@ This is a custom bot for my personal server.
 # Features
  - [x] Server greetings
  - [x] Create custom commands
+ - [ ] Give role when user joins guild
  - [ ] Play music
