@@ -1,10 +1,24 @@
+// Libs
 const Discord = require('discord.js')
 const fs = require('fs')
+const mongoose = require('mongoose')
 
-const { token } = require('./config.json').bot
-const { owner } = require('./config.json').bot
+// Credentials
+const { token } = require('../credentials/discord.json')
+const { cluster } = require('../credentials/mongodb')
 
+// Config
+const config = require('./config.json')
+const { webServer } = config
+const { owner } = config.bot
+
+// Import
+const httpServer = require('./webserver/app')
 const bot = new Discord.Client({ owner })
+
+mongoose.connect(cluster, {
+    useNewUrlParser: true
+})
 
 // This function takes care of event handling. Ex: when bot is ready or a user joined guild.
 fs.readdir('./events/', (err, files) => {
@@ -14,5 +28,10 @@ fs.readdir('./events/', (err, files) => {
         bot.on(eventName, arg => eventHandler(bot, arg))
     })
 })
+
+// Initialize the webServer
+if (webServer) {
+    httpServer()
+}
 
 bot.login(token)

@@ -1,10 +1,10 @@
 {
     "bot": {
-        "token": "",
         "owner": ""
     },
     "server": {
         "key": "!",
         "memberLog": "member-log"
-    }
+    },
+    "webServer": true
 }
