@@ -4,8 +4,8 @@ const fs = require('fs')
 const mongoose = require('mongoose')
 
 // Credentials
-const { token } = require('../credentials/discord.json')
-const { cluster } = require('../credentials/mongodb')
+const { token } = require('./credentials/discord.json')
+const { cluster } = require('./credentials/mongodb')
 
 // Config
 const config = require('./config.json')

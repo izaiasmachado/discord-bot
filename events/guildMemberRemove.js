@@ -6,6 +6,6 @@ module.exports = (bot, member) => {
     if (!channel) {
         return false
     }
-    
+
     channel.send(`:point_right: ${member} left the server :slight_frown:`)
 }
