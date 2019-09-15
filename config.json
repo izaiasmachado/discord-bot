@@ -5,6 +5,5 @@
     "server": {
         "key": "!",
         "memberLog": "member-log"
-    },
-    "webServer": true
+    }
 }

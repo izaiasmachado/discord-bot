@@ -9,11 +9,8 @@ const { cluster } = require('./credentials/mongodb')
 
 // Config
 const config = require('./config.json')
-const { webServer } = config
 const { owner } = config.bot
 
-// Import
-const httpServer = require('./webserver/app')
 const bot = new Discord.Client({ owner })
 
 mongoose.connect(cluster, {
