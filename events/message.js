@@ -28,9 +28,7 @@ module.exports = async (bot, message) => {
 
     if (commandExists) {
         return message.channel.send(commandExists.action)
-    }
-
-    else {
+    } else {
         return false
     }
 }
