@@ -26,9 +26,4 @@ fs.readdir('./events/', (err, files) => {
     })
 })
 
-// Initialize the webServer
-if (webServer) {
-    httpServer()
-}
-
 bot.login(token)
