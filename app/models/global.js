@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose')
 
-const CommandsSchema = new Schema({
+const GlobalSchema = new Schema({
     name: {
         type: String,
         required: true
@@ -16,4 +16,4 @@ const CommandsSchema = new Schema({
     timestamps: true
 })
 
-module.exports = model('Commands', CommandsSchema)
+module.exports = model('GlobalCommands', GlobalSchema)

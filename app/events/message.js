@@ -1,7 +1,8 @@
 const fs = require('fs')
 
 const { key } = require('../config.json').server
-const Command = require('../models/commands')
+
+const globalCommands = require('../models/global')
 
 module.exports = async (bot, message) => {
     if (message.content[0] !== key) {
@@ -21,9 +22,9 @@ module.exports = async (bot, message) => {
             }
         })
     })
-
+    
     // Look for command in the database
-    const commandExists = await Command.findOne({ name: cmd })
+    const commandExists = await globalCommands.findOne({ name: cmd })
 
     if (commandExists) {
         return message.channel.send(commandExists.action)
