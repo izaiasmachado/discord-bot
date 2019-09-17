@@ -14,7 +14,8 @@ const { owner } = config.bot
 const bot = new Discord.Client({ owner })
 
 mongoose.connect(cluster, {
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 })
 
 // This function takes care of event handling. Ex: when bot is ready or a user joined guild.
