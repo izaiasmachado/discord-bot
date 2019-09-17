@@ -10,8 +10,7 @@ module.exports = async (bot, message) => {
 
     const msg = format(message.content)
     const cmd = msg[0]
-    const args = msg[1]
-
+    
     // Look for commands in commands folder.
     fs.readdir('./commands', (err, files) => {
         files.forEach(file => {

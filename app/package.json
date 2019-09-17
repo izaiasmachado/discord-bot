@@ -1,7 +1,7 @@
 {
-  "name": "discord-bot",
+  "name": "discord-bot-app",
   "version": "1.0.0",
-  "description": "Simple discord bot for my server.",
+  "description": "This is the main core of my bot.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,6 +11,12 @@
     "type": "git",
     "url": "git+https://github.com/izaiasmachado/discord-bot.git"
   },
+  "keywords": [
+    "Discord",
+    "bot",
+    "node.js",
+    "javascript."
+  ],
   "author": "Izaias Machado",
   "license": "MIT",
   "bugs": {
@@ -19,6 +25,7 @@
   "homepage": "https://github.com/izaiasmachado/discord-bot#readme",
   "dependencies": {
     "discord.js": "^11.5.1",
-    "mongoose": "^5.6.13"
+    "fs": "0.0.1-security",
+    "mongoose": "^5.7.1"
   }
 }
