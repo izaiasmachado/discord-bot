@@ -1,7 +1,6 @@
 const serverList = require('../models/guild')
 
 module.exports = async (bot, member) => {
-    console.log(member.name)
     const guild = member
     const serverId = guild.id
 
