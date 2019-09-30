@@ -1,17 +1,19 @@
 const fs = require('fs')
 
-const { key } = require('../config.json').server
-const Command = require('../models/commands')
+const serverList = require('../models/guild')
 
 module.exports = async (bot, message) => {
-    if (message.content[0] !== key) {
+    const serverId = message.member.guild.id
+    const server = await serverList.findOne({ serverId })
+    
+    if (message.content[0] !== server.key) {
         return false
     }
 
     const msg = format(message.content)
     const cmd = msg[0]
     
-    // Look for commands in commands folder.
+    // Looks for commands in commands folder.
     fs.readdir('./commands', (err, files) => {
         files.forEach(file => {
             const eventHandler = require(`../commands/${file}`)
@@ -22,14 +24,16 @@ module.exports = async (bot, message) => {
         })
     })
 
-    // Look for command in the database
-    const commandExists = await Command.findOne({ name: cmd })
-
-    if (commandExists) {
-        return message.channel.send(commandExists.action)
-    } else {
-        return false
+    // Looks for commands in MongoDB
+    let name = cmd
+    let size = server.commands.length
+    for (let i = 0; i < size; i++) {
+        if (server.commands[i].name == name) {
+            return message.channel.send(server.commands[i].action)
+        }
     }
+    
+    return false
 }
 
 function format(msg) {
