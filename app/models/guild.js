@@ -13,6 +13,10 @@ const GuildSchema = new Schema({
         type: String,
         required: false
     },
+    logInRole: {
+        type: String,
+        required: false
+    },
     commands: [{
         /*
         {
