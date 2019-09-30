@@ -1,9 +1,5 @@
 {
     "bot": {
         "owner": ""
-    },
-    "server": {
-        "key": "!",
-        "memberLog": "member-log"
     }
 }

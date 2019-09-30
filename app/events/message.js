@@ -13,7 +13,7 @@ module.exports = async (bot, message) => {
     const msg = format(message.content)
     const cmd = msg[0]
     
-    // Look for commands in commands folder.
+    // Looks for commands in commands folder.
     fs.readdir('./commands', (err, files) => {
         files.forEach(file => {
             const eventHandler = require(`../commands/${file}`)
@@ -23,6 +23,15 @@ module.exports = async (bot, message) => {
             }
         })
     })
+
+    // Looks for commands in MongoDB
+    let name = cmd
+    let size = server.commands.length
+    for (let i = 0; i < size; i++) {
+        if (server.commands[i].name == name) {
+            return message.channel.send(server.commands[i].action)
+        }
+    }
     
     return false
 }
