@@ -1,11 +1,12 @@
 const fs = require('fs')
 
-const { key } = require('../config.json').server
-
-const globalCommands = require('../models/global')
+const serverList = require('../models/guild')
 
 module.exports = async (bot, message) => {
-    if (message.content[0] !== key) {
+    const serverId = message.member.guild.id
+    const server = await serverList.findOne({ serverId })
+    
+    if (message.content[0] !== server.key) {
         return false
     }
 
@@ -23,14 +24,7 @@ module.exports = async (bot, message) => {
         })
     })
     
-    // Look for command in the database
-    const commandExists = await globalCommands.findOne({ name: cmd })
-
-    if (commandExists) {
-        return message.channel.send(commandExists.action)
-    } else {
-        return false
-    }
+    return false
 }
 
 function format(msg) {

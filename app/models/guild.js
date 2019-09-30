@@ -5,7 +5,22 @@ const GuildSchema = new Schema({
         type: String,
         required: true
     },
+    key: {
+        type: String,
+        required: true
+    },
+    memberLog: {
+        type: String,
+        required: false
+    },
     commands: [{
+        /*
+        {
+            name: "",
+            description: "",
+            action: ""
+        }
+        */
         type: Schema.Types.Mixed,
         ref: 'Guild'
     }]
@@ -13,4 +28,5 @@ const GuildSchema = new Schema({
     timestamps: true
 })
 
-module.exports = model('Guild', GuildSchema)
+module.exports = model('GuildSchema', GuildSchema)
+
