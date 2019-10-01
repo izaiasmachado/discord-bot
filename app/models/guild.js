@@ -32,15 +32,9 @@ const GuildSchema = new Schema({
         }
     },
     commands: [{
-        name: {
-            type: String,
-        },
-        description: {
-            type: String
-        },
-        action: {
-            type: String
-        }
+        name: String,
+        description: String,
+        action: String
     }]
 }, {
     timestamps: true
