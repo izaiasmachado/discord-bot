@@ -9,24 +9,32 @@ const GuildSchema = new Schema({
         type: String,
         required: true
     },
-    memberLog: {
-        type: String,
-        required: false
-    },
-    logInRole: {
-        type: String,
-        required: false
+    guildMember: {
+        join: {
+            publicMessage: {
+                bool: Boolean,
+                channel: String
+            },
+            privateMessage: {
+                bool: Boolean,
+                content: String
+            },
+            giveRoles: {
+                bool: Boolean,
+                roles: []
+            }
+        },
+        leave: {
+            publicMessage: {
+                bool: Boolean,
+                channel: String
+            }
+        }
     },
     commands: [{
-        /*
-        {
-            name: "",
-            description: "",
-            action: ""
-        }
-        */
-        type: Schema.Types.Mixed,
-        ref: 'Guild'
+        name: String,
+        description: String,
+        action: String
     }]
 }, {
     timestamps: true

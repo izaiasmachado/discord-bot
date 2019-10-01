@@ -3,6 +3,10 @@ const fs = require('fs')
 const serverList = require('../models/guild')
 
 module.exports = async (bot, message) => {
+    if (!message.member) {
+        return false
+    }
+
     const serverId = message.member.guild.id
     const server = await serverList.findOne({ serverId })
     
