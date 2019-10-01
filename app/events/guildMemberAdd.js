@@ -4,19 +4,22 @@ module.exports = async (bot, member) => {
     const serverId = member.guild.id
     const server = await serverList.findOne({ serverId })
 
-    const roles = server.guildMember.join.roles
-    
-    for (let i = 0; i < roles.length; i++) {
-        const role = member.guild.roles.find(role => role.id == roles[i])
-        
-        if (roles[i] && role)
-        await member.addRole(role)
-    }
-    
-    const memberLog = server.guildMember.join.channel
-    const channel = member.guild.channels.find(ch => ch.id == memberLog)
+    const { giveRoles } = server.guildMember.join
 
-    if (memberLog && channel) {
+    if (giveRoles.bool) {
+        for (let i = 0; i < giveRoles.roles.length; i++) {
+            const role = member.guild.roles.find(role => role.id == giveRoles.roles[i])
+    
+            if (giveRoles.roles[i] && role) {
+                member.addRole(role)
+            }
+        }
+    }
+
+    const { publicMessage } = server.guildMember.join
+    const channel = member.guild.channels.find(ch => ch.id == publicMessage.channel)
+
+    if (publicMessage.bool && channel) {
         return channel.send(`:point_right: ${member} just joined the server!`)
     }
 

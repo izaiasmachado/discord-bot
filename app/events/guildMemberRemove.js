@@ -4,10 +4,10 @@ module.exports = async (bot, member) => {
     const serverId = member.guild.id
     const server = await serverList.findOne({ serverId })
     
-    const memberLog = server.guildMember.join.channel
-    const channel = member.guild.channels.find(ch => ch.id == memberLog)
+    const { publicMessage } = server.guildMember.leave
+    const channel = member.guild.channels.find(ch => ch.id == publicMessage.channel)
 
-    if (memberLog && channel) {
+    if (publicMessage.bool && channel) {
         return channel.send(`:point_right: ${member} left the server.`)
     }
 

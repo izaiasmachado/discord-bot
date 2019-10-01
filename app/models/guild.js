@@ -11,14 +11,23 @@ const GuildSchema = new Schema({
     },
     guildMember: {
         join: {
-            channel: {
-                type: String
+            publicMessage: {
+                bool: Boolean,
+                channel: String
             },
-            roles: []
+            privateMessage: {
+                bool: Boolean,
+                content: String
+            },
+            giveRoles: {
+                bool: Boolean,
+                roles: []
+            }
         },
         leave: {
-            channel: {
-                type: String
+            publicMessage: {
+                bool: Boolean,
+                channel: String
             }
         }
     },
