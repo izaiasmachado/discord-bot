@@ -9,24 +9,29 @@ const GuildSchema = new Schema({
         type: String,
         required: true
     },
-    memberLog: {
-        type: String,
-        required: false
-    },
-    logInRole: {
-        type: String,
-        required: false
+    guildMember: {
+        join: {
+            channel: {
+                type: String
+            },
+            roles: []
+        },
+        leave: {
+            channel: {
+                type: String
+            }
+        }
     },
     commands: [{
-        /*
-        {
-            name: "",
-            description: "",
-            action: ""
+        name: {
+            type: String,
+        },
+        description: {
+            type: String
+        },
+        action: {
+            type: String
         }
-        */
-        type: Schema.Types.Mixed,
-        ref: 'Guild'
     }]
 }, {
     timestamps: true
