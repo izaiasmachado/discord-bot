@@ -20,8 +20,14 @@ module.exports = async (bot, member) => {
     const channel = member.guild.channels.find(ch => ch.id == publicMessage.channel)
 
     if (publicMessage.bool && channel) {
-        return channel.send(`:point_right: ${member} just joined the server!`)
+        channel.send(`:point_right: ${member} just joined the server!`)
     }
 
-    return false
+    const { privateMessage } = server.guildMember.join
+
+    if (privateMessage.bool && member) {
+        member.send(privateMessage.content)
+    }
+
+    return true
 }
