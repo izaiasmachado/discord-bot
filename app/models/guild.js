@@ -10,35 +10,60 @@ const GuildSchema = new Schema({
         required: true
     },
     guildMember: {
+        bool: {
+            type: Boolean,
+            default: false
+        },
         join: {
             publicMessage: {
-                bool: Boolean,
+                bool: {
+                    type: Boolean,
+                    default: false
+                },
                 channel: String
             },
             privateMessage: {
-                bool: Boolean,
+                bool: {
+                    type: Boolean,
+                    default: false
+                },
                 content: String
             },
             giveRoles: {
-                bool: Boolean,
+                bool: {
+                    type: Boolean,
+                    default: false
+                },
                 roles: []
             }
         },
         leave: {
             publicMessage: {
-                bool: Boolean,
+                bool: {
+                    type: Boolean,
+                    default: false
+                },
                 channel: String
             }
         }
     },
-    commands: [{
-        name: String,
-        description: String,
-        action: String
-    }]
+    custom: {
+        bool: {
+            type: Boolean,
+            default: false
+        },
+        commands: [{
+            bool: {
+                type: Boolean,
+                default: true
+            },
+            name: String,
+            description: String,
+            action: String
+        }]
+    }
 }, {
     timestamps: true
 })
 
-module.exports = model('GuildSchema', GuildSchema)
-
+module.exports = model('Guild', GuildSchema)

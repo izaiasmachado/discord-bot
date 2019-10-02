@@ -1,10 +1,14 @@
-const serverList = require('../models/guild')
+const serverList = require('../models/Guild')
 
 module.exports = async (bot, member) => {
     const serverId = member.guild.id
     const server = await serverList.findOne({ serverId })
 
-    const { giveRoles } = server.guildMember.join
+    if (!server.guildMember.bool) {
+        return false
+    }
+    
+    const { giveRoles, publicMessage, privateMessage } = server.guildMember.join
 
     if (giveRoles.bool) {
         for (let i = 0; i < giveRoles.roles.length; i++) {
@@ -16,14 +20,11 @@ module.exports = async (bot, member) => {
         }
     }
 
-    const { publicMessage } = server.guildMember.join
     const channel = member.guild.channels.find(ch => ch.id == publicMessage.channel)
 
     if (publicMessage.bool && channel) {
         channel.send(`:point_right: ${member} just joined the server!`)
     }
-
-    const { privateMessage } = server.guildMember.join
 
     if (privateMessage.bool && member) {
         member.send(privateMessage.content)

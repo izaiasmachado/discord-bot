@@ -1,4 +1,4 @@
-const serverList = require('../models/guild')
+const serverList = require('../models/Guild')
 
 module.exports = async (bot, member) => {
     const guild = member
