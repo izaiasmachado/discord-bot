@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-const serverList = require('../models/guild')
+const serverList = require('../models/Guild')
 
 module.exports = async (bot, message) => {
     if (!message.member) {
@@ -28,12 +28,17 @@ module.exports = async (bot, message) => {
         })
     })
 
-    // Looks for commands in MongoDB
+    if (!server.custom.bool) {
+        return false
+    }
+
+    const { commands } = server.custom
+
     let name = cmd
-    let size = server.commands.length
+    let size = commands.length
     for (let i = 0; i < size; i++) {
-        if (server.commands[i].name == name) {
-            return message.channel.send(server.commands[i].action)
+        if ((commands[i].name == name) && (commands[i].bool)) {
+            return message.channel.send(commands[i].action)
         }
     }
     
