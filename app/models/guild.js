@@ -20,14 +20,21 @@ const GuildSchema = new Schema({
                     type: Boolean,
                     default: false
                 },
-                channel: String
+                channel: String,
+                content: {
+                    type: String,
+                    default: ':point_right: {user} just joined the server!'
+                }
             },
             privateMessage: {
                 bool: {
                     type: Boolean,
                     default: false
                 },
-                content: String
+                content: {
+                    type: String,
+                    default: 'Welcome to **{server}**!'
+                }
             },
             giveRoles: {
                 bool: {
@@ -43,7 +50,11 @@ const GuildSchema = new Schema({
                     type: Boolean,
                     default: false
                 },
-                channel: String
+                channel: String,
+                content: {
+                    type: String,
+                    default: ':point_right: **{idname}** left the server.'
+                }
             }
         }
     },

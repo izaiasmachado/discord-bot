@@ -27,7 +27,6 @@ module.exports = (info) => {
     if (private) {
         member.send(msg)
     }
-
 }
 
 function format(content, list) {

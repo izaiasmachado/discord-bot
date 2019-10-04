@@ -1,4 +1,5 @@
 const serverList = require('../models/Guild')
+const messageModule = require('../modules/messageModule')
 
 module.exports = async (bot, member) => {
     const serverId = member.guild.id
@@ -12,8 +13,13 @@ module.exports = async (bot, member) => {
     const channel = member.guild.channels.find(ch => ch.id == publicMessage.channel)
 
     if (publicMessage.bool && channel) {
-        return channel.send(`:point_right: ${member} left the server.`)
+        messageModule({
+            member: member.user,
+            guild: member.guild,
+            content: publicMessage.content,
+            public: { channel }
+        })
     }
 
-    return false
+    return true
 }
