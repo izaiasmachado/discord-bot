@@ -8,15 +8,14 @@ const { token } = require('./credentials/discord.json')
 const { cluster } = require('./credentials/mongodb')
 
 // Config
-const config = require('./config.json')
-const { owner } = config.bot
-
-const bot = new Discord.Client({ owner })
+const owner = '299163570615222279'
 
 mongoose.connect(cluster, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
+
+const bot = new Discord.Client({ owner })
 
 // This function takes care of event handling. Ex: when bot is ready or a user joined guild.
 fs.readdir('./events/', (err, files) => {
