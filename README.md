@@ -7,7 +7,8 @@ This is a custom bot for my personal server.
   - [Mongoose](https://mongoosejs.com/)
   
 # Features
- - [x] Server greetings
+ - [x] Custom server greetings
+ - [x] Custom direct message when user joins guild
  - [x] Create custom commands
- - [ ] Give role when user joins guild
+ - [x] Give role when user joins guild
  - [ ] Play music
