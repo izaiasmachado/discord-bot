@@ -10,6 +10,9 @@ module.exports = (info) => {
     }, {
         invoque: 'idname',
         changeFor: user.username + '#' + user.discriminator
+    }, {
+        invoque: 'block',
+        changeFor: '```'
     }]
 
     const msg = format(content, list)
