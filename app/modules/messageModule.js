@@ -1,15 +1,15 @@
 module.exports = (info) => {
-    const { member, guild, content, public, private } = info
+    const { user, guild, content, public, private } = info
 
     const list = [{
         invoque: 'user',
-        changeFor: member
+        changeFor: user
     }, {
         invoque: 'server',
         changeFor: guild
     }, {
         invoque: 'idname',
-        changeFor: member.username + '#' + member.discriminator
+        changeFor: user.username + '#' + user.discriminator
     }]
 
     const msg = format(content, list)
@@ -18,14 +18,14 @@ module.exports = (info) => {
         const { channel } = public
 
         if (public.reply) {
-            channel.send(`${member}, ${msg}`)
+            channel.send(`${user}, ${msg}`)
         } else {
             channel.send(msg)
         }
     }
 
-    if (private) {
-        member.send(msg)
+    if (private && !user.bot) {
+        user.send(msg)
     }
 }
 

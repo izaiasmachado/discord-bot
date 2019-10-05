@@ -25,7 +25,7 @@ module.exports = async (bot, member) => {
 
     if (publicMessage.bool && channel) {
         messageModule({
-            member: member.user,
+            user: member.user,
             guild: member.guild,
             content: publicMessage.content,
             public: { channel }
@@ -34,7 +34,7 @@ module.exports = async (bot, member) => {
 
     if (privateMessage.bool && member) {
         messageModule({
-            member: member.user,
+            user: member.user,
             guild: member.guild,
             content: privateMessage.content,
             private: true

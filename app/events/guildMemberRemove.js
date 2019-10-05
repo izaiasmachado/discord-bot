@@ -8,13 +8,13 @@ module.exports = async (bot, member) => {
     if (!server.guildMember.bool) {
         return false
     }
-    
+
     const { publicMessage } = server.guildMember.leave
     const channel = member.guild.channels.find(ch => ch.id == publicMessage.channel)
 
     if (publicMessage.bool && channel) {
         messageModule({
-            member: member.user,
+            user: member.user,
             guild: member.guild,
             content: publicMessage.content,
             public: { channel }
