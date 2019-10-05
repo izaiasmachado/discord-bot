@@ -10,10 +10,6 @@ const GuildSchema = new Schema({
         required: true
     },
     guildMember: {
-        bool: {
-            type: Boolean,
-            default: false
-        },
         join: {
             publicMessage: {
                 bool: {
