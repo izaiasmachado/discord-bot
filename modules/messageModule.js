@@ -18,7 +18,11 @@ module.exports = (info) => {
     const msg = format(content, list)
 
     if (public) {
-        const { channel } = public
+        let temp = ''
+        for (let i = 2; i < 20; i++)
+            temp += public.channel[i]
+
+        const channel = guild.channels.find(ch => ch.id == temp)
 
         if (public.reply) {
             channel.send(`${user}, ${msg}`)
