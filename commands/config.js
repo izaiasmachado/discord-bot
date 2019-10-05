@@ -1,4 +1,5 @@
 const serverList = require('../models/Guild')
+const messageModule = require('../modules/messageModule')
 
 module.exports = async (bot, message, msg) => {
     const serverId = message.guild.id
@@ -10,6 +11,12 @@ module.exports = async (bot, message, msg) => {
     const channel = message.guild.channels.find(ch => ch.name == 'perry-dashboard')
     let content = ''
 
+    if (message.author.id != message.guild.owner.id)
+        return message.reply(`you don't have permission to use this command. Type !help for some information.`)
+
+    if (!res[0])
+        return channel.send('**Config Guide**\n```\n1) joinPublicMessage - send message when user joins.\n2) joinPrivateMessage - send DM when user joins.\n3) joinRole - give roles to the new ones.\n4) leavePublicMessage - send message when user leaves guild.\n```')
+    
     switch (res[0]) {
         case 'joinPublicMessage':
             if (res[1]) {
