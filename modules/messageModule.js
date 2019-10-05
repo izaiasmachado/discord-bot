@@ -44,7 +44,7 @@ module.exports = (info) => {
 function format(content, list) {
     for (let i = 0; i < content.length; i++) {
         for (let j = 0; j < list.length; j++) {
-        content = content.replace(`{${list[j].invoque}}`, list[j].changeFor)
+            content = content.replace(`{${list[j].invoque}}`, list[j].changeFor)
         }
     }
 
