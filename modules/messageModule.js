@@ -19,8 +19,13 @@ module.exports = (info) => {
 
     if (public) {
         let temp = ''
-        for (let i = 2; i < 20; i++)
-            temp += public.channel[i]
+
+        if (public.channel[0] == '<') {
+            for (let i = 2; i < 20; i++)
+                temp += public.channel[i]
+        } else {
+            temp = public.channel
+        }
 
         const channel = guild.channels.find(ch => ch.id == temp)
 

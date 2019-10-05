@@ -9,7 +9,12 @@ module.exports = async (bot, member) => {
 
     if (giveRoles.bool) {
         for (let i = 0; i < giveRoles.roles.length; i++) {
-            const role = giveRoles.roles[i]
+            let temp = ''
+
+            for (let j = 2; j < 20; j++)
+                temp += giveRoles.roles[i][j]
+
+            const role = member.guild.roles.find(role => role.id == temp)
 
             if (giveRoles.roles[i] && role) {
                 member.addRole(role)
@@ -17,7 +22,7 @@ module.exports = async (bot, member) => {
         }
     }
 
-    const channel = { publicMessage }
+    const { channel } = publicMessage
 
     if (publicMessage.bool && channel) {
         messageModule({

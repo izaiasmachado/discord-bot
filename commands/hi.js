@@ -6,10 +6,8 @@ module.exports = (bot, message, msg) => {
         guild: message.guild,
         content: 'hello!',
         public: {
-            channel: message.channel,
+            channel: message.channel.id,
             reply: true
         }
     })
-
-    
 }

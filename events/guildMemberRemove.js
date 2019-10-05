@@ -6,7 +6,7 @@ module.exports = async (bot, member) => {
     const server = await serverList.findOne({ serverId })
 
     const { publicMessage } = server.guildMember.leave
-    const channel = { publicMessage }
+    const { channel } = publicMessage
 
     if (publicMessage.bool && channel) {
         messageModule({
