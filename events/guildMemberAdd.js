@@ -5,20 +5,18 @@ module.exports = async (bot, member) => {
     const serverId = member.guild.id
     const server = await serverList.findOne({ serverId })
 
-    const { giveRoles, publicMessage, privateMessage } = server.guildMember.join
+    const { giveRole, publicMessage, privateMessage } = server.guildMember.join
 
-    if (giveRoles.bool) {
-        for (let i = 0; i < giveRoles.roles.length; i++) {
-            let temp = ''
+    if (giveRole.bool) {
+        let temp = ''
 
-            for (let j = 2; j < 20; j++)
-                temp += giveRoles.roles[i][j]
+        for (let j = 3; j < 21; j++)
+            temp += giveRole.role[j]
 
-            const role = member.guild.roles.find(role => role.id == temp)
+        const role = member.guild.roles.find(role => role.id == temp)
 
-            if (giveRoles.roles[i] && role) {
-                member.addRole(role)
-            }
+        if (giveRole.role && role) {
+            member.addRole(role)
         }
     }
 
