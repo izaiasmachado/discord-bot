@@ -1,5 +1,5 @@
-# Discord Bot
-This is a custom bot for my personal server.
+# Perry Bot
+This is an open-source bot, feel free to contribute or use it on your server.
 
 # What did you use to create this?
   - [Discord.js](http://discord.js.org)
