@@ -14,9 +14,16 @@ module.exports = async (bot, message, msg) => {
     if (message.author.id != message.guild.owner.id)
         return message.reply(`you don't have permission to use this command. Type !help for some information.`)
 
-    if (!res[0])
-        return channel.send('**Config Guide**\n```\n1) joinPublicMessage - send message when user joins.\n2) joinPrivateMessage - send DM when user joins.\n3) joinRole - give roles to the new ones.\n4) leavePublicMessage - send message when user leaves guild.\n```')
-    
+    if (!res[0]) {
+        content += '**Config Guide**\n'
+        content += '```\n'
+        content += '1) joinPublicMessage - send message when user joins.\n'
+        content += '2) joinPrivateMessage - send DM when user joins.\n'
+        content += '3) joinRole - give roles to the new ones.\n'
+        content += '4) leavePublicMessage - send message when user leaves guild.\n'
+        content += '```'
+    }
+
     switch (res[0]) {
         case 'joinPublicMessage':
             if (res[1]) {
@@ -33,8 +40,6 @@ module.exports = async (bot, message, msg) => {
                     }
                     server.guildMember.join.publicMessage.content = temp
                 }
-
-                server.save()
             }
 
 
@@ -63,8 +68,6 @@ module.exports = async (bot, message, msg) => {
                     }
                     server.guildMember.join.privateMessage.content = temp
                 }
-
-                server.save()
             }
 
 
@@ -84,8 +87,6 @@ module.exports = async (bot, message, msg) => {
                         server.guildMember.join.giveRole.role = res[i]
                     }
                 }
-
-                server.save()
             }
 
             content = `**Command**: ${res[0]}\n`
@@ -112,9 +113,7 @@ module.exports = async (bot, message, msg) => {
                     server.guildMember.leave.publicMessage.content = temp
                 }
 
-                server.save()
             }
-
 
             content = `**Command**: ${res[0]}\n`
             content += '**State**: '
@@ -127,8 +126,9 @@ module.exports = async (bot, message, msg) => {
             break
     }
 
-    channel.send(content)
-
-    return true
+    if (content) {
+        server.save()
+        return channel.send(content)
+    }
 
 }
