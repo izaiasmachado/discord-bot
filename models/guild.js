@@ -10,10 +10,6 @@ const GuildSchema = new Schema({
         required: true
     },
     guildMember: {
-        bool: {
-            type: Boolean,
-            default: false
-        },
         join: {
             publicMessage: {
                 bool: {
@@ -36,12 +32,12 @@ const GuildSchema = new Schema({
                     default: 'Welcome to **{server}**!'
                 }
             },
-            giveRoles: {
+            giveRole: {
                 bool: {
                     type: Boolean,
                     default: false
                 },
-                roles: []
+                role: String
             }
         },
         leave: {

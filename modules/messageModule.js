@@ -10,12 +10,24 @@ module.exports = (info) => {
     }, {
         invoque: 'idname',
         changeFor: user.username + '#' + user.discriminator
+    }, {
+        invoque: 'block',
+        changeFor: '```'
     }]
 
     const msg = format(content, list)
 
     if (public) {
-        const { channel } = public
+        let temp = ''
+
+        if (public.channel[0] == '<') {
+            for (let i = 2; i < 20; i++)
+                temp += public.channel[i]
+        } else {
+            temp = public.channel
+        }
+
+        const channel = guild.channels.find(ch => ch.id == temp)
 
         if (public.reply) {
             channel.send(`${user}, ${msg}`)
@@ -30,8 +42,10 @@ module.exports = (info) => {
 }
 
 function format(content, list) {
-    for (let j = 0; j < list.length; j++) {
-        content = content.replace(`{${list[j].invoque}}`, list[j].changeFor)
+    for (let i = 0; i < content.length; i++) {
+        for (let j = 0; j < list.length; j++) {
+            content = content.replace(`{${list[j].invoque}}`, list[j].changeFor)
+        }
     }
 
     return content
