@@ -8,14 +8,12 @@ module.exports = async (bot, member) => {
     
     console.log(`joined ${guild.name}!`)
     
-    if (serverExists) {
-        return true
-    } 
-
-    await serverList.create({
-        serverId,
-        key: '!'
-    })
+    if (!serverExists) {
+        await serverList.create({
+            serverId,
+            key: '!'
+        })
+    }
 
     let name = 'perry-dashboard';
     const dashboardExists = guild.channels.find(ch => ch.name == name)
