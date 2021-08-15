@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node src/server.js",
+    "local": "node -r dotenv/config src/server.js",
+    "dev": "nodemon -r dotenv/config src/server.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +28,10 @@
   "dependencies": {
     "discord.js": "^11.5.1",
     "fs": "0.0.1-security",
-    "mongoose": "^5.7.5"
+    "mongoose": "^5.13.7"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.12"
   }
 }
